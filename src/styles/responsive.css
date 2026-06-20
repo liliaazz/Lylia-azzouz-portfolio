@@ -1,0 +1,532 @@
+/* ============================================================
+   responsive.css — Lylia Portfolio
+   Breakpoints:
+     Mobile  : max-width 767px
+     Tablet  : 768px – 1023px
+     Desktop : 1024px+   (default — no overrides needed)
+   Import in main.tsx AFTER globals.css
+   ============================================================ */
+
+/* ============================================================
+   1. GLOBAL RESETS & OVERFLOW GUARDS
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* ============================================================
+   2. HERO SECTION
+   ============================================================ */
+
+/* ── Mobile ── */
+@media (max-width: 767px) {
+
+  /* Stack the two-column grid into a single column */
+  section[aria-label="Hero — Lylia's introduction"] {
+    grid-template-columns: 1fr !important;
+    min-height: auto !important;
+    padding: 80px 20px 48px !important;
+    gap: 40px;
+  }
+
+  /* Left panel: remove heavy right padding */
+  section[aria-label="Hero — Lylia's introduction"] > div:first-child {
+    padding-right: 0 !important;
+    order: 1;
+  }
+
+  /* Right panel: centre photo, reduce vertical padding */
+  section[aria-label="Hero — Lylia's introduction"] > div:last-child {
+    order: 2;
+    padding: 24px 0 16px !important;
+    justify-content: center;
+  }
+
+  /* Photo frame: shrink so badges don't overflow viewport */
+  .relative.w-\[300px\].h-\[360px\] {
+    width: 220px !important;
+    height: 268px !important;
+  }
+
+  /* Hide outer two decoration layers on mobile to avoid overflow */
+  .absolute.rounded-\[28px\],
+  .absolute.rounded-\[26px\] {
+    display: none !important;
+  }
+
+  /* Identity badges: hide all on mobile — too cramped around small photo */
+  section[aria-label="Hero — Lylia's introduction"] [style*="floatBadge"] {
+    display: none !important;
+  }
+
+  /* Floating mission card: reposition to bottom of viewport */
+  .glass.rounded-2xl[style*="fixed"] {
+    display: none !important;
+  }
+
+  /* Hero headline: ensure it doesn't overflow */
+  section[aria-label="Hero — Lylia's introduction"] h1 {
+    font-size: clamp(26px, 7.5vw, 36px) !important;
+    line-height: 1.15 !important;
+  }
+
+  /* Sub text: full width */
+  section[aria-label="Hero — Lylia's introduction"] p.text-\[14\.5px\] {
+    max-width: 100% !important;
+  }
+
+  /* Stats: wrap if needed */
+  section[aria-label="Hero — Lylia's introduction"] .flex.gap-8 {
+    gap: 20px !important;
+    flex-wrap: wrap;
+  }
+
+  /* CTA buttons: stack vertically */
+  section[aria-label="Hero — Lylia's introduction"] .flex.gap-\[10px\].flex-wrap {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  /* Cursor glow: disable on touch devices */
+  .cursor-glow {
+    display: none !important;
+  }
+}
+
+/* ── Tablet ── */
+@media (min-width: 768px) and (max-width: 1023px) {
+
+  section[aria-label="Hero — Lylia's introduction"] {
+    grid-template-columns: 1fr 1fr !important;
+    padding: 60px 32px !important;
+    gap: 0;
+  }
+
+  /* Shrink photo frame slightly */
+  .relative.w-\[300px\].h-\[360px\] {
+    width: 240px !important;
+    height: 290px !important;
+  }
+
+  /* Hide outer decoration layer to prevent overflow on tablet */
+  .absolute.rounded-\[28px\] {
+    display: none !important;
+  }
+
+  /* Hide mission card at this size — not enough room */
+  .glass.rounded-2xl[style*="fixed"] {
+    display: none !important;
+  }
+
+  /* Tighten badges that overflow outside photo */
+  section[aria-label="Hero — Lylia's introduction"] [style*="floatBadge"][style*="left:-44px"] {
+    left: -28px !important;
+  }
+  section[aria-label="Hero — Lylia's introduction"] [style*="floatBadge"][style*="right:-36px"] {
+    right: -20px !important;
+  }
+  section[aria-label="Hero — Lylia's introduction"] [style*="floatBadge"][style*="right:-28px"] {
+    right: -14px !important;
+  }
+
+  section[aria-label="Hero — Lylia's introduction"] h1 {
+    font-size: clamp(26px, 3.2vw, 38px) !important;
+  }
+
+  section[aria-label="Hero — Lylia's introduction"] > div:first-child {
+    padding-right: 24px !important;
+  }
+}
+
+/* ============================================================
+   3. JOURNEY SECTION
+   ============================================================ */
+
+@media (max-width: 767px) {
+
+  /* Reduce section vertical padding */
+  #journey {
+    padding: 64px 16px !important;
+  }
+
+  /* Central spine: keep it but shift to left edge */
+  #journey .relative.w-full.max-w-3xl {
+    padding-left: 28px;
+  }
+
+  /* Move the progress line to the left edge */
+  #journey .absolute.left-1\/2 {
+    left: 0 !important;
+    transform: none !important;
+  }
+
+  /* All milestones: stack left-aligned (remove alternating) */
+  #journey .flex.w-full {
+    justify-content: flex-start !important;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  /* Milestone content cards: full width */
+  #journey .max-w-\[280px\] {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* Milestone rows: reduce gap */
+  #journey .flex.flex-col.gap-16 {
+    gap: 32px !important;
+  }
+
+  /* Flip milestones with flex-row-reverse back to normal on mobile */
+  #journey .flex.items-start.flex-row-reverse {
+    flex-direction: row !important;
+  }
+
+  /* Journey section header */
+  #journey h2 {
+    font-size: clamp(26px, 7vw, 36px) !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+
+  #journey {
+    padding: 80px 24px !important;
+  }
+
+  /* Slightly smaller milestone cards */
+  #journey .max-w-\[280px\] {
+    max-width: 220px !important;
+  }
+
+  #journey .flex.flex-col.gap-16 {
+    gap: 48px !important;
+  }
+}
+
+/* ============================================================
+   4. THINGS I'VE BUILT SECTION
+   ============================================================ */
+
+@media (max-width: 767px) {
+
+  #things-built {
+    padding: 64px 16px !important;
+  }
+
+  /* Collapse 3-col board to single column */
+  #things-built .grid.grid-cols-1.md\:grid-cols-3 {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Remove the offset on the middle column */
+  #things-built .md\:mt-8 {
+    margin-top: 0 !important;
+  }
+
+  /* Remove card tilts — they cause horizontal overflow on small screens */
+  #things-built [style*="rotate"] {
+    transform: none !important;
+  }
+
+  /* Cards: full width, no fixed widths */
+  #things-built .relative.bg-white\/90 {
+    max-width: 100% !important;
+  }
+
+  #things-built h2 {
+    font-size: clamp(26px, 7vw, 36px) !important;
+  }
+
+  /* Section header: full width subtext */
+  #things-built p.max-w-\[520px\] {
+    max-width: 100% !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+
+  #things-built {
+    padding: 80px 24px !important;
+  }
+
+  /* Two columns on tablet instead of three */
+  #things-built .grid.grid-cols-1.md\:grid-cols-3 {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* Centre column offset: reset */
+  #things-built .md\:mt-8 {
+    margin-top: 0 !important;
+  }
+
+  /* Reduce card tilt on tablet — subtle only */
+  #things-built [style*="rotate(-1.2deg)"] { transform: rotate(-0.5deg) !important; }
+  #things-built [style*="rotate(-0.8deg)"] { transform: rotate(-0.3deg) !important; }
+  #things-built [style*="rotate(0.6deg)"]  { transform: rotate(0.3deg)  !important; }
+  #things-built [style*="rotate(0.9deg)"]  { transform: rotate(0.3deg)  !important; }
+}
+
+/* ============================================================
+   5. LEADERSHIP / BEYOND PROJECTS SECTION
+   ============================================================ */
+
+@media (max-width: 767px) {
+
+  #beyond-projects {
+    padding: 64px 16px !important;
+  }
+
+  /* Collapse network grid to single column */
+  #beyond-projects .grid.grid-cols-1.md\:grid-cols-3 {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Hide connection paths on mobile — they look odd in single column */
+  #beyond-projects .grid.grid-cols-1.md\:grid-cols-3.my-1 {
+    display: none !important;
+  }
+
+  /* Impact tags: wrap naturally */
+  #beyond-projects .flex.flex-wrap.justify-center {
+    gap: 8px !important;
+  }
+
+  #beyond-projects h2 {
+    font-size: clamp(22px, 6.5vw, 32px) !important;
+    max-width: 100% !important;
+  }
+
+  #beyond-projects p.max-w-\[500px\] {
+    max-width: 100% !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+
+  #beyond-projects {
+    padding: 80px 24px !important;
+  }
+
+  /* Two columns on tablet */
+  #beyond-projects .grid.grid-cols-1.md\:grid-cols-3 {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* Hide the third column connection paths */
+  #beyond-projects .grid.grid-cols-1.md\:grid-cols-3.my-1 {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+/* ============================================================
+   6. CONTACT SECTION
+   ============================================================ */
+
+@media (max-width: 767px) {
+
+  #contact {
+    padding: 64px 16px !important;
+  }
+
+  /* Stack contact grid: paths first, sidebar second */
+  #contact .grid.grid-cols-1.lg\:grid-cols-\[1fr_340px\] {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  /* Sidebar: unstick on mobile */
+  #contact .lg\:sticky {
+    position: static !important;
+  }
+
+  /* Social cards: single column */
+  #contact .grid.grid-cols-1.sm\:grid-cols-2 {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Profile card: reduce padding */
+  #contact .relative.bg-white\/92 {
+    padding: 16px !important;
+  }
+
+  #contact h2 {
+    font-size: clamp(24px, 6.5vw, 36px) !important;
+  }
+
+  #contact p.max-w-\[520px\] {
+    max-width: 100% !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+
+  #contact {
+    padding: 80px 24px !important;
+  }
+
+  /* Stack grid on tablet too — 340px sidebar is too tight */
+  #contact .grid.grid-cols-1.lg\:grid-cols-\[1fr_340px\] {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+
+  /* On tablet, show social cards in 2 columns */
+  #contact .grid.grid-cols-1.sm\:grid-cols-2 {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* Sidebar row: side-by-side profile + resume on tablet */
+  #contact .flex.flex-col.gap-4.lg\:sticky {
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    gap: 20px !important;
+    position: static !important;
+  }
+
+  #contact .flex.flex-col.gap-4.lg\:sticky > * {
+    flex: 1 !important;
+  }
+}
+
+/* ============================================================
+   7. ALL SECTION HEADERS — shared padding & font scaling
+   ============================================================ */
+
+@media (max-width: 767px) {
+
+  /* All sections: base padding */
+  section {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* Section top/bottom padding */
+  .py-28 {
+    padding-top: 64px !important;
+    padding-bottom: 64px !important;
+  }
+  .py-16 {
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+  }
+
+  /* Headings inside sections */
+  section h2 {
+    font-size: clamp(24px, 7vw, 34px) !important;
+  }
+
+  /* Subtext paragraphs */
+  section > div > div > p,
+  section .max-w-\[520px\],
+  section .max-w-\[500px\] {
+    max-width: 100% !important;
+  }
+
+  /* Max width containers */
+  .max-w-4xl,
+  .max-w-5xl,
+  .max-w-6xl {
+    max-width: 100% !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+
+  section {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+
+  .py-28 {
+    padding-top: 80px !important;
+    padding-bottom: 80px !important;
+  }
+
+  .max-w-4xl  { max-width: 100% !important; }
+  .max-w-5xl  { max-width: 100% !important; }
+  .max-w-6xl  { max-width: 100% !important; }
+}
+
+/* ============================================================
+   8. TYPOGRAPHY SCALING SAFETY NET
+   ============================================================ */
+
+@media (max-width: 767px) {
+
+  /* Prevent any hardcoded large px text from overflowing */
+  h1 { font-size: clamp(24px, 7.5vw, 40px) !important; }
+  h2 { font-size: clamp(22px, 6.5vw, 34px) !important; }
+  h3 { font-size: clamp(14px, 4vw, 18px)   !important; }
+
+  /* Make role rotator text readable */
+  .text-\[11px\]      { font-size: 11px !important; }
+  .text-\[12\.5px\]   { font-size: 12px !important; }
+  .text-\[13px\]      { font-size: 13px !important; }
+  .text-\[14\.5px\]   { font-size: 14px !important; }
+  .text-\[15px\]      { font-size: 14px !important; }
+}
+
+/* ============================================================
+   9. NAVIGATION PLACEHOLDER
+   (ready for the nav component when it's added)
+   ============================================================ */
+
+@media (max-width: 767px) {
+
+  /* If nav exists, push hero below it */
+  body.has-nav section[aria-label="Hero — Lylia's introduction"] {
+    padding-top: 96px !important;
+  }
+}
+
+/* ============================================================
+   10. UTILITY — prevent horizontal scroll from any element
+   ============================================================ */
+
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+}
+
+/* Glass cards: prevent overflow on small viewports */
+.glass {
+  max-width: calc(100vw - 32px);
+}
+
+/* Fixed floating elements: keep inside viewport */
+[style*="position: fixed"],
+[style*="position:fixed"] {
+  max-width: calc(100vw - 24px) !important;
+}
+
+@media (max-width: 767px) {
+  /* Any absolutely-positioned badge or card that uses negative left/right */
+  [style*="left:-"],
+  [style*="right:-"] {
+    /* Pull them back inside the photo frame */
+    left: auto !important;
+    right: auto !important;
+    position: static !important;
+    display: none !important;
+  }
+
+  /* Exception: keep things inside #journey, #things-built etc */
+  #journey [style*="left:-"],
+  #journey [style*="right:-"],
+  #beyond-projects [style*="left:-"],
+  #beyond-projects [style*="right:-"] {
+    display: none !important;
+  }
+}
