@@ -7,7 +7,7 @@ interface SectionHeaderProps {
   subtext: string
 }
 
-export function SectionHeader({ label, heading, subtext }: SectionHeaderProps) {
+export function SectionHeader({ label, heading: _heading, subtext }: SectionHeaderProps) {
   const { ref, inView } = useInView({ threshold: 0.35 })
 
   return (

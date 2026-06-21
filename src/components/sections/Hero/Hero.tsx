@@ -17,6 +17,8 @@ import {
   PARTICLE_CONFIG,
 } from '@/constants/hero.constants'
 
+const PHOTO_SRC = lyliaImage;
+
 
 
 export function Hero() {
@@ -49,7 +51,7 @@ export function Hero() {
 
         {/* Right 40% */}
         <HeroRight
-          imageSrc={lyliaImage}
+          imageSrc={PHOTO_SRC}
           imageAlt={PHOTO_META.imageAlt}
           name={PHOTO_META.name}
           location={PHOTO_META.location}

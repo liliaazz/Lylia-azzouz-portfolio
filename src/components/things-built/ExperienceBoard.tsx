@@ -28,7 +28,7 @@ export function ExperienceBoard({ cards, skillGroups, languages }: ExperienceBoa
   const center: StoryCardData[] = []
   const right:  StoryCardData[] = []
 
-  cards.forEach((card, i) => {
+  cards.forEach((card) => {
     if (card.size === 'large') {
       // Distribute large cards across all three columns
       if (left.length <= center.length && left.length <= right.length)  left.push(card)

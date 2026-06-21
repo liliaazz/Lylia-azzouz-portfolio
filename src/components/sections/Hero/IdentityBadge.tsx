@@ -40,7 +40,6 @@ export function IdentityBadge({
   const colors = colorMap[colorClass]
 
   const floatDuration  = [5.5, 6.2, 7.0, 5.8][index % 4]
-  const floatAmplitude = 8
 
   return (
     <motion.div

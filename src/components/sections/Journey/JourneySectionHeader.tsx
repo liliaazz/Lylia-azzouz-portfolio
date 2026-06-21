@@ -9,7 +9,7 @@ interface JourneySectionHeaderProps {
 
 export function JourneySectionHeader({
   label,
-  heading,
+  heading: _heading,
   subtext,
 }: JourneySectionHeaderProps) {
   const { ref, inView } = useInView({ threshold: 0.4 })
