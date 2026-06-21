@@ -1,11 +1,11 @@
 {
   "name": "lylia-portfolio",
-  "engines": {
-  "node": "24.x"
-},
   "private": true,
   "version": "1.0.0",
   "type": "module",
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
